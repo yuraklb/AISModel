@@ -9,6 +9,15 @@ namespace AISModel
     class Program
     {
         static void Main(string[] args) {
+
+            State.Init();
+
+            Network myNetwork = new Network(50);
+            myNetwork.Init();
+
+            myNetwork.GenerateGraphFile();
+
+
         }
     }
 }
