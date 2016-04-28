@@ -10,34 +10,16 @@ namespace AISModel
         private List<Device> mDevices;
 
         private NetProtocol mProtocol;
-
-        private int mCountDevices;
-
-        private int mTmpPerc;
-
-        private Random rnd;// = new Random();
-
-        public Network(int pDefaultCountDevices = 10)
+        
+        public Network()
         {
-            mTmpPerc = 5;
-
-            rnd = new Random();
-
-            mCountDevices = pDefaultCountDevices;
             mDevices = new List<Device>();
             mProtocol = new NetProtocol();
         }
 
         public void Init()
         {
-            //Generate network devices
-            for(int i = 0; i < mCountDevices; i++) {
-                mDevices.Add(new Device(i));
-            }
-
-            for(int i = 0; i < mCountDevices; i++) {
-                GenerateConnectedLinks(i);
-            }
+            
         }
 
         public void GenerateConnectedLinks(int pIdDevice)

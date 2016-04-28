@@ -8,12 +8,16 @@ namespace AISModel
         private int mId;
 
         private List<int> mConnectedTo;
+
+        private List<Detector> mDetectors; 
         
         public Device(int pId)
         {
         
             mId = pId;
             mConnectedTo = new List<int>();
+            mDetectors = new List<Detector>();
+
         }
         
         public bool IsLinkExist(int pIdDevice)
