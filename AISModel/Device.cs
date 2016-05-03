@@ -46,5 +46,9 @@ namespace AISModel
             return mConnectedTo;
         }
 
+		public int GetId() {
+			return mId;
+		}
+
     }
 }

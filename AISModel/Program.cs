@@ -12,13 +12,13 @@ namespace AISModel
 
             State.Init();
 
-            Network myNetwork = new Network(50);
+            Network myNetwork = new Network();
 
             myNetwork.Init();
 
-            for(int i = 0; i < 100; i++) {
-                myNetwork.RunIteration();
-            }
+//            for(int i = 0; i < 100; i++) {
+//                myNetwork.RunIteration();
+//            }
 
             //myNetwork.GenerateGraphFile();
 
