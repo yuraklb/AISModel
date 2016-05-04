@@ -1,10 +1,10 @@
 ﻿namespace AISModel
 {
-    public class NetPacket
+    public class NetworkPacket
     {
 		private PacketType mType;
 
-		public NetPacket(PacketType pType = PacketType.Normal) {
+		public NetworkPacket(PacketType pType = PacketType.Normal) {
 			mType = pType;
 		}
 

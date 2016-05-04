@@ -5,7 +5,7 @@
 		public Detector() {
 		}
 
-		public PacketType HandleNetPacket(NetPacket pPacket) {
+		public PacketType HandleNetPacket(NetworkPacket pPacket) {
 
 			if (Recognize (pPacket) == PacketType.Error) {
 				return PacketType.Error;
@@ -18,7 +18,7 @@
 			}
 		}
 
-		private PacketType Recognize(NetPacket pPacket) {
+		private PacketType Recognize(NetworkPacket pPacket) {
 			//do magic
 			return pPacket.GetPacketType; 
 		}
