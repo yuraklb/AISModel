@@ -5,6 +5,9 @@ namespace AISModel
 {
     public static class State
     {
+
+		public static int MaxDevices = 5;
+
         public static DataTable mLogTable;
         public static DataSet mLogDataSet;
 

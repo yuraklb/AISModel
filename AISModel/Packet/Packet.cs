@@ -30,6 +30,14 @@ namespace AISModel
 
 			return str;
 		}
+
+		public int GetRouteHop() {
+			return mRoute.Count;
+		}
+
+		public int GetNextId() {
+			return mRoute.Dequeue();
+		}
 	
     }
 }

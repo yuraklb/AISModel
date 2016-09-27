@@ -53,6 +53,7 @@
     <Compile Include="Packet\PacketType.cs" />
     <Compile Include="Network\Protocol.cs" />
     <Compile Include="Detector\Detector.cs" />
+    <Compile Include="ShowDeviceInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

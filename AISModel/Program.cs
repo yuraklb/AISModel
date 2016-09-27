@@ -9,25 +9,25 @@ namespace AISModel
     class Program
     {
         static void Main(string[] args) {
-
-			const int CountDevices = 10;
-
+			
             State.Init();
 
             Network myNetwork = new Network();
 
-			myNetwork.AddDevices(NetworkGenerator.GenerateDevices(CountDevices));
+			myNetwork.AddDevices(NetworkGenerator.GenerateDevices(State.MaxDevices));
 
-			foreach(var item in myNetwork.GetDevices()) {
-				List<Packet> l = PacketGenerator.GetListPacketsWithRoute(CountDevices);
-				foreach(var packet in l) {
-					item.AddIncomingPacket(packet);
-				}
-			}
+//			foreach(var item in myNetwork.GetDevices()) {
+//				List<Packet> l = PacketGenerator.GetListPacketsWithRoute(State.MaxDevices);
+//				foreach(var packet in l) {
+//					item.AddIncomingPacket(packet);
+//				}
+//			}
 
-			foreach(var item in myNetwork.GetDevices()) {
-				item.PrintInfo();
-			}
+			myNetwork.RunIteration();
+
+//			foreach(var item in myNetwork.GetDevices()) {
+//				item.PrintInfo();
+//			}
 
 			//NetworkGenerator.GenerateConnectedLinks(myNetwork.GetDevices());
 

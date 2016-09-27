@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace AISModel
 {
-	public static class PacketGenerator
+	public class PacketGenerator
 	{
-		public static List<Packet> GetListPacketsWithRoute(int pMaxId, int pMaxCountPackets = 10) {
+		public List<Packet> GetListPacketsWithRoute(int pMaxId, int pMaxCountPackets = 1) {
 			List<Packet> l = new List<Packet>();
 
 			int cntPackets = RandomGenerator.GetRandomInt(1, pMaxCountPackets);
@@ -19,10 +19,35 @@ namespace AISModel
 
 		}
 
-		public static Packet GetPacketWithRoute(int pMaxId) {
+		private Packet GetPacketWithRoute(int pMaxId) {
+
+
 			Packet np;
 
-			np = GetPacketNormal();
+			int pType = RandomGenerator.GetRandomInt(0, 10);
+
+			switch(pType) {
+				case 0:
+				case 1:
+					np = GetPacketError();
+					Console.WriteLine("ERROR GENERATE");
+					break;
+				case 2:
+				case 3:
+				case 4:
+					np = GetPacketWarning();
+					Console.WriteLine("WARNING GENERATE");
+					break;
+				case 5:
+				case 6:
+				case 7:
+				case 8:
+				case 9:
+				case 10:
+					default:
+					np = GetPacketNormal();
+					break;
+			}
 
 			np.SetRoute(GenerateRoute(pMaxId));
 
@@ -30,27 +55,27 @@ namespace AISModel
 
 		}
 
-		public static Packet GetPacketError() {
+		private Packet GetPacketError() {
 			return new Packet(PacketType.Error);				
 		}
 
-		public static Packet GetPacketWarning() {
+		private Packet GetPacketWarning() {
 			return new Packet(PacketType.Warning);
 		}
 
-		public static Packet GetPacketNormal() {
+		private Packet GetPacketNormal() {
 			return new Packet(PacketType.Normal);
 		}
 
-		public static Queue<int> GenerateRoute(int pMaxId) {
+		private Queue<int> GenerateRoute(int pMaxId) {
 
 			Queue<int> route = new Queue<int>();
 
-			int cnt = 0;
+			int maxhop = 0;
 
-			cnt = RandomGenerator.GetRandomInt(1, 10);
+			maxhop = RandomGenerator.GetRandomInt(1, pMaxId);
 
-			for(int i = 0; i < cnt; i++) {
+			for(int i = 0; i < maxhop; i++) {
 
 				do {
 

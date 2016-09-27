@@ -8,7 +8,6 @@ namespace AISModel
 {
     internal class NetworkGenerator
     {
-
         public static List<Device> GenerateDevices(int mCountDevices, int mTmpPerc = 5)
         {
 			List<Device> mListDevices = new List<Device>(mCountDevices);
@@ -20,17 +19,16 @@ namespace AISModel
 			return mListDevices;
         }
 
-		public static void GenerateConnectedLinks(List<Device> pListDevices, int pTmpPerc = 5)
-		{
-			foreach (Device device in pListDevices) {
-				for(int i = 0; i < pListDevices.Count; i++) {
-					if(RandomGenerator.GetRandomInt(1, 100) < pTmpPerc) {
-						device.AddLinkToDevice(i);
-						// mDevices[i].AddLinkToDevice(pIdDevice);
-						Console.WriteLine("Connect {0} <==> {1}", device.GetId(), i);
-					}
-				}	
-			}
-		}
+//		public static void GenerateConnectedLinks(List<Device> pListDevices, int pTmpPerc = 5)
+//		{
+//			foreach (Device device in pListDevices) {
+//				for(int i = 0; i < pListDevices.Count; i++) {
+//					if(RandomGenerator.GetRandomInt(1, 100) < pTmpPerc) {
+//						device.AddLinkToDevice(i);
+//						Console.WriteLine("Connect {0} <==> {1}", device.GetId(), i);
+//					}
+//				}	
+//			}
+//		}
     }
 }
