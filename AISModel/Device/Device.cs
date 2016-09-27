@@ -9,6 +9,9 @@ namespace AISModel
 
         private List<int> mConnectedTo;
 
+		private Queue<Packet> mIncoming;
+		private Queue<Packet> mOutgoing;
+
         private List<Detector> mDetectors; 
         
         public Device(int pId)
@@ -18,18 +21,14 @@ namespace AISModel
             mConnectedTo = new List<int>();
             mDetectors = new List<Detector>();
 
+			mIncoming = new Queue<Packet>();
+			mOutgoing = new Queue<Packet>();
+
         }
         
         public bool IsLinkExist(int pIdDevice)
         {
             return mConnectedTo.Exists(x => x == pIdDevice);
-            //for(int i = 0; i < mConnectedTo.Count; i++) {
-            //    if(mConnectedTo[i] == pIdDevice) {
-            //        return true;
-            //    }
-            //}
-
-            //return false;
         }
 
         public void AddLinkToDevice(int pIdDevice)
@@ -50,5 +49,22 @@ namespace AISModel
 			return mId;
 		}
 
+		public void AddIncomingPacket(Packet pPacket) {
+			mIncoming.Enqueue(pPacket);
+		}
+
+		public Packet GetOutgoingPacket() {
+			return mOutgoing.Dequeue();
+		}
+
+		public void PrintInfo() {
+
+			Console.WriteLine("Device ID {0} has incoming {1} outgoing {2}", mId, mIncoming.Count, mOutgoing.Count);
+			foreach(var item in mIncoming) {
+				Console.WriteLine(item.GetRouteString());
+			}
+
+
+		}
     }
 }

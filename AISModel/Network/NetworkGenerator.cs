@@ -22,11 +22,9 @@ namespace AISModel
 
 		public static void GenerateConnectedLinks(List<Device> pListDevices, int pTmpPerc = 5)
 		{
-			Random rnd = new Random ();
-
 			foreach (Device device in pListDevices) {
 				for(int i = 0; i < pListDevices.Count; i++) {
-					if(rnd.Next(1, 100) < pTmpPerc) {
+					if(RandomGenerator.GetRandomInt(1, 100) < pTmpPerc) {
 						device.AddLinkToDevice(i);
 						// mDevices[i].AddLinkToDevice(pIdDevice);
 						Console.WriteLine("Connect {0} <==> {1}", device.GetId(), i);

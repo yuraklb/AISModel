@@ -15,12 +15,13 @@ namespace AISModel
             mDevices = new List<Device>();
         }
 
-        public void Init()
-        {
-			mDevices = NetworkGenerator.GenerateDevices (10);
-        }
+		public void AddDevices(List<Device> pDevices) {
+			mDevices = pDevices;
+		}
 
-        
+		public List<Device> GetDevices() {
+			return mDevices;
+		}
 
 //        public void GenerateGraphFile()
 //        {

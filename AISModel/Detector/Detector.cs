@@ -5,7 +5,7 @@
 		public Detector() {
 		}
 
-		public PacketType HandleNetPacket(NetworkPacket pPacket) {
+		public PacketType HandleNetPacket(Packet pPacket) {
 
 			if (Recognize (pPacket) == PacketType.Error) {
 				return PacketType.Error;
@@ -13,14 +13,15 @@
 			if (Recognize (pPacket) == PacketType.Warning) {
 				return PacketType.Warning;
 			}
-			if (Recognize (pPacket) == PacketType.Normal) {
+			else {
+				//if (Recognize (pPacket) == PacketType.Normal) 
 				return PacketType.Normal;
 			}
 		}
 
-		private PacketType Recognize(NetworkPacket pPacket) {
+		private PacketType Recognize(Packet pPacket) {
 			//do magic
-			return pPacket.GetPacketType; 
+			return pPacket.GetPacketType(); 
 		}
     }
 }
