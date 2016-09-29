@@ -4,12 +4,14 @@ namespace AISModel
 {
     public class Packet
     {
+		private int mId;
 
 		private Queue<int> mRoute;
 
 		private PacketType mType;
 
-		public Packet(PacketType pType = PacketType.Normal) {
+		public Packet(int pId, PacketType pType = PacketType.Normal) {
+			mId = pId;
 			mType = pType;
 		}
 
@@ -31,13 +33,17 @@ namespace AISModel
 			return str;
 		}
 
-		public int GetRouteHop() {
+		public int GetRouteHops() {
 			return mRoute.Count;
 		}
 
-		public int GetNextId() {
+		public int GetNextDeviceId() {
 			return mRoute.Dequeue();
 		}
 	
+		public int GetId() {
+			return mId;
+		}
+
     }
 }

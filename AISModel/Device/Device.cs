@@ -38,7 +38,6 @@ namespace AISModel
         public Device(int pId)
         {
             mId = pId;
-            //mConnectedTo = new List<int>();
         }
 
 		public int GetId() {
@@ -49,13 +48,17 @@ namespace AISModel
 			mIncoming.Enqueue(pPacket);
 		}
 
-		public Queue<Packet> GetOutgoingPacket() {
+		public Queue<Packet> GetOutgoingPackets() {
 			return mOutgoing;
 		}
 
-		public void RunIteration() {
+		public Queue<Packet> GetIncomintPackets() {
+			return mIncoming;
+		}
 
-			SendRandomPackets();
+		public void HandlePackets() {
+			
+			Logger.AddLine(mId.ToString(), "Device START HANDLE", "START HANDLE INCOMING PACKETS");
 
 			if(mIncoming.Count > 0) {
 
@@ -63,22 +66,29 @@ namespace AISModel
 
 				if(p.GetPacketType() != PacketType.Error) {
 					if(p.GetPacketType() == PacketType.Warning) {
-						Console.WriteLine("Warning!");
+						Logger.AddLine(p.GetId().ToString(), "Packet", "WARNING DETECTED!");
 					} 
-
-					if(p.GetRouteHop() > 0) {
+					if(p.GetRouteHops() > 0) {
+						Logger.AddLine(p.GetId().ToString(), "Packet", "PUT PACKET TO OUTGOING!");
 						mOutgoing.Enqueue(p);
 					} else {
-						Console.WriteLine("Packet delivered!");
+						Logger.AddLine(p.GetId().ToString(), "Packet", "Packet delivered!!");
 					}
 				} else {
-					Console.WriteLine("Destroy error!");
+					Logger.AddLine(p.GetId().ToString(), "Packet", "Destroy error!");
 				}
 			}
+
+			Logger.AddLine(mId.ToString(), "Device END HANDLE", "END HANDLE INCOMING PACKETS");
 		}
 
-		private void SendRandomPackets() {
+		public void AddRandomPacketForOutgoing() {
+
+			Logger.AddLine(mId.ToString(), "Device START GENERATE", "START GENERATE OUTGOING PACKETS");
+
 			var list = mPacketGenerator.GetListPacketsWithRoute(State.MaxDevices);
+
+			Logger.AddLine(mId.ToString(), "Device END GENERATE", "END GENERATE OUTGOING PACKETS");
 
 			foreach(var l in list) {
 				mOutgoing.Enqueue(l);
