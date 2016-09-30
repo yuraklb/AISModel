@@ -5,6 +5,8 @@ namespace AISModel
 {
 	public static class Protocol
 	{
+		private static bool mGenerateOutgoingTraffic = false;
+
 		private static int mIdRunIteration = 0;
 
 		private static void TransportPacketTo(int pId, Packet pPacket, List<Device> pDevices) {
@@ -17,11 +19,13 @@ namespace AISModel
 
 		public static void RunIteration(Network pNetwork)
 		{
-
 			List<Device> pDevices = pNetwork.GetDevices();
 
 			foreach(var device in pDevices) {
-				device.AddRandomPacketForOutgoing();
+
+				if(mGenerateOutgoingTraffic) {
+					device.AddRandomPacketForOutgoing();
+				}
 				device.HandlePackets();
 			}
 
@@ -37,6 +41,14 @@ namespace AISModel
 			State.AppendNetworkState(mIdRunIteration++, pDevices);
 		}
 
+		public static void StartStopGenerateOutgoingTraffic() {
+			if(mGenerateOutgoingTraffic) {
+				mGenerateOutgoingTraffic = false;
+			} else {
+				mGenerateOutgoingTraffic = true;
+			}
+
+		}
 	}
 }
 

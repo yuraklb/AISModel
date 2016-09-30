@@ -1,30 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OxyPlot;
-using OxyPlot.Series;
-using OxyPlot.Axes;
-
-using Gtk;
-
-
-
-//			foreach(var item in myNetwork.GetDevices()) {
-//				List<Packet> l = PacketGenerator.GetListPacketsWithRoute(State.MaxDevices);
-//				foreach(var packet in l) {
-//					item.AddIncomingPacket(packet);
-//				}
-//			}
-
-//myNetwork.RunIteration();
-
-//			foreach(var item in myNetwork.GetDevices()) {
-//				item.PrintInfo();
-//			}
-
-//NetworkGenerator.GenerateConnectedLinks(myNetwork.GetDevices());
+﻿using Gtk;
 
 namespace AISModel
 {
@@ -40,20 +14,28 @@ namespace AISModel
 
 			myNetwork.AddDevices(NetworkGenerator.GenerateDevices(State.MaxDevices));
 
-			CPlot plot = new CPlot();
+			var plot = new CPlot();
 
 			State.SetDelegate(plot.AddCountPackets);
 
-			MainWindow window = new MainWindow(myNetwork, plot);
+			MainWindow window = new MainWindow(plot);
 
 			Logger.SetLogger(window.GetListStore());
 
-			window.SetDelegate(Protocol.RunIteration);
+			window.SetDelegateStartStopFunction(Protocol.StartStopGenerateOutgoingTraffic);
+
+			GLib.Timeout.Add(100, delegate {
+				Protocol.RunIteration(myNetwork);	
+				return true;
+			});
+
 
 			window.ShowAll();
 		
 			Application.Run();
 
+
+			//NetworkGenerator.GenerateConnectedLinks(myNetwork.GetDevices());
             //myNetwork.GenerateGraphFile();
 
         }

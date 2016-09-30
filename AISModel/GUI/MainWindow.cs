@@ -4,16 +4,16 @@ using System;
 namespace AISModel
 {
 
-	public delegate void RunFunctionDelegate(Network pNetwork); 
+	public delegate void StartStopFunctionDelegate(); 
 
 	public class MainWindow : Gtk.Window
 	{
 
-		private RunFunctionDelegate RunFunction;
+		private StartStopFunctionDelegate StartStopFunction;
 
 		LogWindow logWindow;
 
-		public MainWindow(Network pNetwork, CPlot pPlot) : base("AIS Model")
+		public MainWindow(CPlot pPlot) : base("AIS Model")
 		{
 						
 			logWindow = new LogWindow();
@@ -39,31 +39,31 @@ namespace AISModel
 
 			vbox1.PackStart(showLogButton, false, false, 0);
 
-			Button runIterationButton = new Button("Run");
-			runIterationButton.Clicked += (object sender, EventArgs e) => {
-				RunFunction(pNetwork);
-				this.QueueDraw();
+			Button startStopButton = new Button("Run");
+			startStopButton.Clicked += (object sender, EventArgs e) => {
+				if(startStopButton.Label == "Run") {
+					startStopButton.Label = "Stop";
+				} else {
+					startStopButton.Label = "Run";
+				}
+				StartStopFunction();
 			};
-
-
-			vbox1.PackStart(runIterationButton, false, false, 0);
-
-
+			vbox1.PackStart(startStopButton, false, false, 0);
 			this.Add(vbox1);
 
-
-
-			//window.BorderWidth = 10;
+			pPlot.OnAppendNewValue += () => {
+				this.QueueDraw();
+			};
 		}
 
-
-		public void SetDelegate(RunFunctionDelegate pFunc) {
-			RunFunction = pFunc;
+		public void SetDelegateStartStopFunction(StartStopFunctionDelegate pFunc) {
+			StartStopFunction = pFunc;
 		}
 
 		public Gtk.ListStore GetListStore() {
 			return logWindow.GetListStore();
 		}
+
 
 	}
 }

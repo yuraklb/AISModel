@@ -1,21 +1,6 @@
 ﻿<Properties StartupItem="AISModel/AISModel.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AISModel/Network/Protocol.cs">
-    <Files>
-      <File FileName="AISModel/GUI/LogWindow.cs" Line="1" Column="1" />
-      <File FileName="AISModel/GUI/MainWindow.cs" Line="45" Column="22" />
-      <File FileName="AISModel/GUI/CPlot.cs" Line="67" Column="1" />
-      <File FileName="AISModel/Network/NetworkState.cs" Line="13" Column="42" />
-      <File FileName="AISModel/State.cs" Line="69" Column="123" />
-      <File FileName="AISModel/Program.cs" Line="45" Column="17" />
-      <File FileName="AISModel/Network/Network.cs" Line="24" Column="3" />
-      <File FileName="AISModel/Network/NetworkGenerator.cs" Line="1" Column="1" />
-      <File FileName="AISModel/Network/Protocol.cs" Line="23" Column="37" />
-      <File FileName="AISModel/Device/Device.cs" Line="85" Column="10" />
-      <File FileName="AISModel/Packet/PacketGenerator.cs" Line="29" Column="13" />
-      <File FileName="AISModel/Detector/Detector.cs" Line="17" Column="6" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
