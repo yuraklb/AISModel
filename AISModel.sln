@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
+# Visual Studio 2012
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AISModel", "AISModel\AISModel.csproj", "{485718D7-E32E-45FE-8114-A6BEF6516A87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AISAlgo", "AISAlgo\AISAlgo.csproj", "{F8EB210A-2999-47AD-9A18-FB590BBE640B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GA", "GA\GA.csproj", "{C38A3C1A-BFA7-4F7A-9D73-62D1DBE28E5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{485718D7-E32E-45FE-8114-A6BEF6516A87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{485718D7-E32E-45FE-8114-A6BEF6516A87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{485718D7-E32E-45FE-8114-A6BEF6516A87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C38A3C1A-BFA7-4F7A-9D73-62D1DBE28E5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C38A3C1A-BFA7-4F7A-9D73-62D1DBE28E5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C38A3C1A-BFA7-4F7A-9D73-62D1DBE28E5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C38A3C1A-BFA7-4F7A-9D73-62D1DBE28E5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8EB210A-2999-47AD-9A18-FB590BBE640B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8EB210A-2999-47AD-9A18-FB590BBE640B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8EB210A-2999-47AD-9A18-FB590BBE640B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8EB210A-2999-47AD-9A18-FB590BBE640B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
