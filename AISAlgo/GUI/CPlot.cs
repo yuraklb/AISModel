@@ -13,9 +13,9 @@ namespace AISAlgo
 	{
 		public event TDOnAppendNewValueHandler OnAppendNewValue;
 
-		LineSeries mCountNormalPackets;
-		LineSeries mCountWarningPackets;
-		LineSeries mCountErrorPackets;
+		LineSeries mCountAntigenes;
+		LineSeries mCountDetectors;
+		LineSeries mCountAntibodies;
 
 		PlotModel plotModel;
 
@@ -23,34 +23,41 @@ namespace AISAlgo
 
 			plotModel = new PlotModel();
 
-			plotModel.Title = "Trigonometric functions";
-			plotModel.Subtitle = "Example using the FunctionSeries";
+			plotModel.Title = "AIS Model";
 			plotModel.PlotType = PlotType.XY;// Cartesian
 			plotModel.Background = OxyColors.White;
 
 			plotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Bottom });
 			plotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Left });
 
-			mCountNormalPackets = new LineSeries {
-				MarkerType = MarkerType.Circle,
-				MarkerSize = 4,
-				MarkerStroke = OxyColors.White,
 
-					
+			mCountAntigenes = new LineSeries {
+//				MarkerType = MarkerType.Circle,
+//				MarkerSize = 4,
+//				MarkerStroke = OxyColors.Red,
+				Title = "Antigenes"
 			};
-			mCountWarningPackets = new LineSeries();
-			mCountErrorPackets = new LineSeries();
 
-			plotModel.Series.Add(mCountNormalPackets);
-			plotModel.Series.Add(mCountWarningPackets);
-			plotModel.Series.Add(mCountErrorPackets);
+			mCountDetectors = new LineSeries {
+//				MarkerType = MarkerType.Cross,
+//				MarkerSize = 4,
+//				MarkerStroke = OxyColors.Blue,
+				Title = "Detectors"
+			};
+
+			mCountAntibodies = new LineSeries {
+//				MarkerType = MarkerType.Cross,
+//				MarkerSize = 4,
+//				MarkerStroke = OxyColors.Green,
+				Title = "Antibodies"
+			};
+
+			plotModel.Series.Add(mCountAntigenes);
+			plotModel.Series.Add(mCountDetectors);
+			plotModel.Series.Add(mCountAntibodies);
 		}
 
 		public Gtk.Widget GetPlotView() {
-
-//			plotModel.Series.Add(new FunctionSeries(Math.Sin, -10, 10, 0.1, "sin(x)"));
-//			plotModel.Series.Add(new FunctionSeries(Math.Cos, -10, 10, 0.1, "cos(x)"));
-//			plotModel.Series.Add(new FunctionSeries(t => 5 * Math.Cos(t), t => 5 * Math.Sin(t), 0, 2 * Math.PI, 0.1,"cos(t),sin(t)"));
 
 			var plotView = new OxyPlot.GtkSharp.PlotView { Model = plotModel, Visible = true };
 
@@ -61,22 +68,29 @@ namespace AISAlgo
 
 		public void AddPoints(int pIdRunIteration, double pCountNormalPackets, double pCountWarningPackets, double pCountErrorPackets) {
 
-//			var r = new Random(100);
-//			var y = r.Next(10, 30);
-//			for (int x = 0; x <= 100; x += 10)
-//			{
-//				mCountNormalPackets.Points.Add(new DataPoint(x, y));
-//				y += r.Next(-5, 5);
-//			}
+			mCountAntigenes.Points.Add(new DataPoint(pIdRunIteration, pCountNormalPackets));
+			mCountDetectors.Points.Add(new DataPoint(pIdRunIteration, pCountWarningPackets));
+			mCountAntibodies.Points.Add(new DataPoint(pIdRunIteration, pCountErrorPackets));
 
-			mCountNormalPackets.Points.Add(new DataPoint(pIdRunIteration, pCountNormalPackets));
-			mCountWarningPackets.Points.Add(new DataPoint(pIdRunIteration, pCountWarningPackets));
-			mCountErrorPackets.Points.Add(new DataPoint(pIdRunIteration, pCountErrorPackets));
+			plotModel.InvalidatePlot (true);
 
-			OnAppendNewValue();
-
+			//OnAppendNewValue();
 		} 
           
+
+		public void Clear() {
+
+			foreach (var axis in plotModel.Axes) {
+				axis.Reset ();
+			}
+
+			mCountAntigenes.Points.Clear ();
+			mCountDetectors.Points.Clear ();
+			mCountAntibodies.Points.Clear ();
+
+
+		}
+
 	}
 }
 

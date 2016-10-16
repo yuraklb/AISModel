@@ -7,12 +7,8 @@ using OxyPlot.Axes;
 namespace AISModel
 {
 
-	public delegate void TDOnAppendNewValueHandler();
-
 	public class CPlot
 	{
-		public event TDOnAppendNewValueHandler OnAppendNewValue;
-
 		LineSeries mCountNormalPackets;
 		LineSeries mCountWarningPackets;
 		LineSeries mCountErrorPackets;
@@ -73,7 +69,7 @@ namespace AISModel
 			mCountWarningPackets.Points.Add(new DataPoint(pIdRunIteration, pCountWarningPackets));
 			mCountErrorPackets.Points.Add(new DataPoint(pIdRunIteration, pCountErrorPackets));
 
-			OnAppendNewValue();
+			plotModel.InvalidatePlot(true);
 
 		} 
           

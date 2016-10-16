@@ -51,9 +51,6 @@ namespace AISModel
 			vbox1.PackStart(startStopButton, false, false, 0);
 			this.Add(vbox1);
 
-			pPlot.OnAppendNewValue += () => {
-				this.QueueDraw();
-			};
 		}
 
 		public void SetDelegateStartStopFunction(StartStopFunctionDelegate pFunc) {
