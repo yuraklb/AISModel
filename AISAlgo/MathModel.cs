@@ -4,17 +4,17 @@ using System.Collections.Generic;
 
 namespace AISAlgo
 {
-	//			V(t) - концентрация антигенов в момент времени. Под
+	//			Ag(t) - концентрация антигенов в момент времени. Под
 	//			антигеном понимается количество вторжений и
 	//			вредоносных действий.
 	//
-	//			F(t) - концентрация антител в момент времени. Под
+	//			Ab(t) - концентрация антител в момент времени. Под
 	//			антителами понимаются, принятие соответствующих
 	//			правила и действий, способствующие
 	//			предотвращению негативного воздействия на
 	//			компьютерную сеть.
 	//
-	//			C(t) - концентрация детекторов. Количество детекторов,
+	//			D(t) - концентрация детекторов. Количество детекторов,
 	//			способных определить вредоносный код,
 	//			несанкционированные действия, аномальное
 	//			поведение сети, и т.д.
@@ -30,15 +30,15 @@ namespace AISAlgo
 	public class MathModel
 	{
 
-		public double V=0.1;
+		public double Ag=0.1;
 		public double b=1.1;
 		public double y=1.0;
 
-		public double C=0.1;
+		public double D=0.1;
 		public double a=0.9;
 		public double mc=0.2;
 
-		public double F=0.0;
+		public double Ab=0.0;
 
 		public double p=1.1;
 		public double n=0.1;
@@ -54,7 +54,7 @@ namespace AISAlgo
 			
 			var sol = Ode.RK547M(
 				0,
-				new Vector(V, C, F),
+				new Vector(Ag, D, Ab),
 				(t, x) => new Vector(
 					b * x[0] - y * x[2] * x[0],
 					a * x[0] - mc * x[1],
@@ -62,7 +62,7 @@ namespace AISAlgo
 				)
 			);
 
-			return sol.SolveFromToStep(0, 50, 0.5);
+			return sol.SolveFromToStep(0, 100, 1);
 		}
 	}
 }

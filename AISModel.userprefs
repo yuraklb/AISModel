@@ -1,6 +1,13 @@
 ﻿<Properties StartupItem="AISAlgo/AISAlgo.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="AISAlgo/MathModel.cs">
+    <Files>
+      <File FileName="AISAlgo/Program.cs" Line="1" Column="1" />
+      <File FileName="AISAlgo/MathModel.cs" Line="45" Column="24" />
+      <File FileName="AISAlgo/GUI/CPlot.cs" Line="1" Column="1" />
+      <File FileName="AISAlgo/GUI/MainWindow.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
