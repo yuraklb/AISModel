@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AISAlgo", "AISAlgo\AISAlgo.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GA", "GA\GA.csproj", "{C38A3C1A-BFA7-4F7A-9D73-62D1DBE28E5C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClonalAlgo", "ClonalAlgo\ClonalAlgo.csproj", "{00EB5C36-9AA4-4ED8-AC9F-F3D4EEED5254}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F8EB210A-2999-47AD-9A18-FB590BBE640B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8EB210A-2999-47AD-9A18-FB590BBE640B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8EB210A-2999-47AD-9A18-FB590BBE640B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00EB5C36-9AA4-4ED8-AC9F-F3D4EEED5254}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00EB5C36-9AA4-4ED8-AC9F-F3D4EEED5254}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00EB5C36-9AA4-4ED8-AC9F-F3D4EEED5254}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00EB5C36-9AA4-4ED8-AC9F-F3D4EEED5254}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
