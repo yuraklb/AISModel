@@ -13,7 +13,7 @@ namespace ClonalAlgo
 		{
 		}
 
-		public Antibody copy()
+		public Antibody Copy()
 		{
 			Antibody c = new Antibody(0);
 			foreach (var item in data) {
@@ -21,5 +21,7 @@ namespace ClonalAlgo
 			}
 			return c;
 		}
+
+		//public double Affinity;
 	}
 }

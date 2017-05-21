@@ -8,15 +8,12 @@ namespace ClonalAlgo
 		public static Random mRandom = new Random();
 
 		public List<int> data = new List<int>();
-		//public int cell_size;
+
 		public Cell(List<int> pData)
 		{
-			foreach (var item in pData)
-			{
+			foreach (var item in pData) {
 				data.Add(item);
 			}
-
-			//cell_size = data.Count;
 		}
 
 		public Cell(int pSize)
@@ -27,54 +24,61 @@ namespace ClonalAlgo
 			}
 		}
 
-		int size()
-		{
-			return data.Count;
-		}
-
-		public Cell Copy()
-		{
-			Cell c = new Cell(0);
-			foreach (var item in data)
-			{
-				c.data.Add(item);
+		public int Size {
+			get {
+				return data.Count;
 			}
-			//c.cell_size = this.cell_size;
-
-			return c;
 		}
 
-		public void mutate(double p_mut)
+		//public Cell Copy()
+		//{
+		//	Cell c = new Cell(0);
+		//	foreach (var item in data)
+		//	{
+		//		c.data.Add(item);
+		//	}
+
+		//	return c;
+		//}
+
+		public void Mutate(double p_mut)
 		{
-			int amount = (int)(data.Count * p_mut);
+			//if (Cell.mRandom.NextDouble() <= pMut)
+			//{
+			//	int bit = Cell.mRandom.Next(data.Count);
+
+			//	if (data[bit] == 1)
+			//	{
+			//		data[bit] = 0;
+			//	}
+			//	else
+			//	{
+			//		data[bit] = 1;
+			//	}
+			//}
+
+
+			int amount = (int)Math.Ceiling(data.Count * p_mut);
 			List<int> idxs = new List<int>(amount);
-			idxs.ForEach((obj) => obj = -1);
 
-			int bit = Cell.mRandom.Next(amount);
-			if (data[bit] == 1) {
-				data[bit] = 0;
-			} else {
-				data[bit] = 1;
+			for (int k = 0; k < amount; k++) {
+				idxs.Add(-1);
 			}
-		}
-		public static int affinity(Cell first, Cell seccond)
-		{
-			// Hamming distance
-			int distance = 0;
-			for (int i = 0; i < first.size(); i++) {
-				if (first.data[i] != seccond.data[i]) {
-					distance++;
+
+			int i = 0;
+			while (i != amount) {
+				int bit = mRandom.Next() % amount;
+				if (idxs.Find((obj) => obj == bit) == -1) {
+					continue;
+				} else {
+					idxs[i++] = bit;
+					if (data[bit] == 1) {
+						data[bit] = 0;
+					} else {
+						data[bit] = 1;
+					}
 				}
 			}
-			return distance;
-		}
-		public static void print_cell(Cell cell, int size, int width)
-		{
-			for (int i = 0; i < size; i++) {
-				Console.Write(cell.data[i]);
-				Console.Write(' ');
-			}
-			Console.WriteLine();
 		}
 	}
 }

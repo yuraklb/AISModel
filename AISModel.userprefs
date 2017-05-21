@@ -3,15 +3,13 @@
   <MonoDevelop.Ide.ItemProperties.AISModel PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="AISModel Status">
     <Files>
-      <File FileName="AISModel/Logger/Logger.cs" Line="5" Column="22" />
-      <File FileName="AISModel/Device/Device.cs" Line="85" Column="18" />
-      <File FileName="AISModel/Detector/Detector.cs" Line="10" Column="16" />
-      <File FileName="AISAlgo/Program.cs" Line="1" Column="1" />
-      <File FileName="AISAlgo/MathModel.cs" Line="1" Column="1" />
-      <File FileName="GA/GA.cs" Line="11" Column="27" />
-      <File FileName="GA/Genome.cs" Line="13" Column="5" />
-      <File FileName="ClonalAlgo/Program.cs" Line="1" Column="1" />
+      <File FileName="ClonalAlgo/Antibody.cs" Line="24" Column="1" />
+      <File FileName="ClonalAlgo/Program.cs" Line="36" Column="17" />
       <File FileName="AISModel Status" />
+      <File FileName="ClonalAlgo/Population.cs" Line="53" Column="20" NotebookId="1" />
+      <File FileName="ClonalAlgo/Cell.cs" Line="71" Column="1" NotebookId="1" />
+      <File FileName="ClonalAlgo/Antigene.cs" Line="6" Column="3" NotebookId="1" />
+      <File FileName="ClonalAlgo/Helper.cs" Line="23" Column="41" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
