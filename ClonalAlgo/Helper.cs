@@ -5,11 +5,11 @@ namespace ClonalAlgo
 {
 	public static class Helper
 	{
-		public static int CellSize = 100;
+		public static int CellSize = 50;
 
-		public static int NumberOfGeneration = 1000;
+		public static int NumberOfGeneration = 330;
 
-		public static int NumberOfAntibody = 100;
+		public static int NumberOfAntibody = 10;
 
 		public static int PercentToInt(int perc100, int cur)
 		{
@@ -22,24 +22,24 @@ namespace ClonalAlgo
 		{
 			for (int i = 0; i < cell.Size; i++) {
 				Console.Write(cell.data[i]);
-				Console.Write(' ');
+				if ((i+1) % 3 != 0) {
+					Console.Write(' ');
+				} else {
+					Console.WriteLine("");
+				}
 			}
 			Console.WriteLine();
 		}
 		public static int Affinity(Cell first, Cell seccond)
 		{
-			// Hamming distance
 			int distance = 0;
 			for (int i = 0; i < first.Size; i++) {
 				if (first.data[i] != seccond.data[i]) {
 					distance++;
 				}
 			}
-
 			return distance;
-
 			//double res = ((double)distance * 100.0) / ((double)first.Size );
-
 			//return res;
 		}
 

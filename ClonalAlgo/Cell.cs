@@ -43,42 +43,42 @@ namespace ClonalAlgo
 
 		public void Mutate(double p_mut)
 		{
-			//if (Cell.mRandom.NextDouble() <= pMut)
-			//{
-			//	int bit = Cell.mRandom.Next(data.Count);
+			if (Cell.mRandom.NextDouble() <= p_mut)
+			{
+				int bit = Cell.mRandom.Next(data.Count);
 
-			//	if (data[bit] == 1)
-			//	{
-			//		data[bit] = 0;
-			//	}
-			//	else
-			//	{
-			//		data[bit] = 1;
-			//	}
-			//}
-
-
-			int amount = (int)Math.Ceiling(data.Count * p_mut);
-			List<int> idxs = new List<int>(amount);
-
-			for (int k = 0; k < amount; k++) {
-				idxs.Add(-1);
-			}
-
-			int i = 0;
-			while (i != amount) {
-				int bit = mRandom.Next() % amount;
-				if (idxs.Find((obj) => obj == bit) == -1) {
-					continue;
-				} else {
-					idxs[i++] = bit;
-					if (data[bit] == 1) {
-						data[bit] = 0;
-					} else {
-						data[bit] = 1;
-					}
+				if (data[bit] == 1)
+				{
+					data[bit] = 0;
+				}
+				else
+				{
+					data[bit] = 1;
 				}
 			}
+
+
+			//int amount = (int)Math.Ceiling(data.Count * p_mut);
+			//List<int> idxs = new List<int>(amount);
+
+			//for (int k = 0; k < amount; k++) {
+			//	idxs.Add(-1);
+			//}
+
+			//int i = 0;
+			//while (i != amount) {
+			//	int bit = mRandom.Next() % amount;
+			//	if (idxs.Find((obj) => obj == bit) == -1) {
+			//		continue;
+			//	} else {
+			//		idxs[i++] = bit;
+			//		if (data[bit] == 1) {
+			//			data[bit] = 0;
+			//		} else {
+			//			data[bit] = 1;
+			//		}
+			//	}
+			//}
 		}
 	}
 }

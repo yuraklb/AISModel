@@ -21,7 +21,5 @@ namespace ClonalAlgo
 			}
 			return c;
 		}
-
-		//public double Affinity;
 	}
 }

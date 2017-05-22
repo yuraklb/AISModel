@@ -33,7 +33,16 @@ RM і переходити до кроку 2 до тих пір, поки не �
 */
 	public class Population
 	{
-		private List<Antibody> ABs = new List<Antibody>();
+
+		double beta = 1.0;
+			double p_mutmax = 0.6; // 60% of the cell will mutate
+			int Abr_begin = 1; // range in set of antibodies, it shows where is a remaining cells (from Arm_begin to Arm_end)
+		int Abr_end = Helper.NumberOfAntibody;
+
+		int amount = 6; // how many antibodies need to select with the lowest affinity
+		
+
+		public List<Antibody> ABs = new List<Antibody>();
 
 		public void Init()
 		{
@@ -43,75 +52,89 @@ RM і переходити до кроку 2 до тих пір, поки не �
 			}
 		}
 
-		public void Init(Population pPopulation)
+		public Population GenerateNewPopulation()
 		{
-			for (int i = 0; i < Helper.NumberOfAntibody; i++) {
-				ABs.Add(pPopulation.ABs[i]);
+			Population pop = new Population();
+
+			pop.ABs.Add(ABs[0].Copy());
+
+			// Editing of remaining population
+			while (pop.ABs.Count != Helper.NumberOfAntibody) {
+				pop.ABs.Add(new Antibody(Helper.CellSize));
 			}
+
+			return pop;
 		}
 
-		public int FindBestGeneration(Antigene pAg)
+		public Antibody FindBestAntibody(Antigene pAg)
 		{
-			//for (int generation = 0; generation < Helper.NumberOfGeneration; generation++) {
+			for (int i = 0; i < Helper.NumberOfAntibody; i++) {
+				ABs.Add(new Antibody(Helper.CellSize));
+			}
 
-				List<KeyValuePair<double, Antibody>> aff = new List<KeyValuePair<double, Antibody>>();
+			List<KeyValuePair<int, int>> aff = new List<KeyValuePair<int, int>>();
+			for (int i = 0; i < Helper.NumberOfAntibody; i++) {
+				aff.Add(new KeyValuePair<int, int>(Helper.Affinity(ABs[i], pAg), i));
+			}
 
-				for (int i = 0; i < ABs.Count; i++) {
-					aff.Add(new KeyValuePair<double, Antibody>(Helper.Affinity(pAg, ABs[i]), ABs[i]));
+			aff.Sort((x, y) => {
+				return x.Key.CompareTo(y.Key);
+			});
+
+
+			aff = aff.GetRange(0, amount);
+
+			//std::multimap<int, int> abn = aff;
+
+			// Clonning
+			List<int> c_amount = new List<int>();
+			//std::vector<int> c_amount(aff.size());
+			for (int _i = 0; _i < aff.Count; _i++) {
+
+				double qwe = (int)((beta * Helper.NumberOfAntibody) / (aff[_i].Value + 1));
+
+				c_amount.Add((int)qwe);
+			}
+
+			int Nc = 0; // sum of the all clones
+			for (int i = 0; i < c_amount.Count; i++) {
+				Nc += c_amount[i];
+			}
+
+			List<Antibody> C = new List<Antibody>(Nc);
+			List<int> C_indexes = new List<int>(Nc);
+			//it = aff.begin();
+			for (int i = 0; i < aff.Count; i++) {
+				while (c_amount[i] != 0) {
+					C.Add(ABs[aff[i].Value].Copy());
+					C_indexes.Add(aff[i].Value + 1);
+					c_amount[i]--;
 				}
+			}
 
-				aff.Sort((x, y) => { return y.Key.CompareTo(x.Key); });
+			// Mutation of all clones
+			for (int i = 0; i < Nc; i++) {
+				double p_mut = p_mutmax * ((beta * C_indexes[i]) / Helper.NumberOfAntibody);
+				C[i].Mutate(p_mut);
+			}
 
-				double treashold = Helper.GenerateTreashold(aff);
+			// Affinity between antibody and antigene
+			List<KeyValuePair<int, int>> aff_star = new List<KeyValuePair<int, int>>();
+			for (int i = 0; i < Nc; i++) {
+				aff_star.Add(new KeyValuePair<int, int>(Helper.Affinity(C[i], pAg), i));
+			}
 
-				 aff.RemoveAll((obj) => obj.Key < treashold);
-
-
-				if (aff.Count > 0) {
-
-					Console.WriteLine("Best aff: " + aff[0].Key);
-
-					if (aff[0].Key > 95.0) {
-						Console.WriteLine("Find!!!");
-						Helper.Print(aff[0].Value);
-						return 0;
-					}
-				}
-
-				List<Antibody> newGeneration = new List<Antibody>();
-
-				if (aff.Count == 0) {
-					newGeneration.Add(new Antibody(pAg.Size));
-				} else {
-					for (int i = 0; i < aff.Count; i++) {
-						for (int j = 0; j < (int)ABs.Count / aff.Count; j++) {
-							newGeneration.Add(aff[i].Value);
-						}
-					}
-
-					while (newGeneration.Count < ABs.Count) {
-						newGeneration.Add(aff[0].Value);
-					}
-				}
-
-				ABs.Clear();
-
-				ABs = new List<Antibody>(newGeneration);
-
-				ABs.ForEach((obj) => obj.Mutate(1));
-
-				if (aff.Count > 0) {
-					Helper.Print(pAg);
-					Console.WriteLine("Affinity: {0}%", aff[0].Key);
-					Helper.Print(aff[0].Value);
-				} else {
-					Console.WriteLine("Destroy all population!");
-				}
+			aff_star.Sort((x, y) => {
+				return x.Key.CompareTo(y.Key);
+			});
 
 
+			// Replacing antibody with its best clone
+			if (aff_star[0].Key < Helper.Affinity(ABs[0], pAg)) {
+				ABs[0] = C[aff_star[0].Value].Copy();
+			}
 
-			//}
-			return -1;
+			return ABs[0];
 		}
 	}
 }

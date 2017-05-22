@@ -1,15 +1,11 @@
 ﻿<Properties StartupConfiguration="{00EB5C36-9AA4-4ED8-AC9F-F3D4EEED5254}|Default">
   <MonoDevelop.Ide.ItemProperties.ClonalAlgo PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.AISModel PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AISModel Status">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ClonalAlgo/Program.cs">
     <Files>
-      <File FileName="ClonalAlgo/Antibody.cs" Line="24" Column="1" />
-      <File FileName="ClonalAlgo/Program.cs" Line="36" Column="17" />
-      <File FileName="AISModel Status" />
-      <File FileName="ClonalAlgo/Population.cs" Line="53" Column="20" NotebookId="1" />
-      <File FileName="ClonalAlgo/Cell.cs" Line="71" Column="1" NotebookId="1" />
-      <File FileName="ClonalAlgo/Antigene.cs" Line="6" Column="3" NotebookId="1" />
-      <File FileName="ClonalAlgo/Helper.cs" Line="23" Column="41" NotebookId="1" />
+      <File FileName="ClonalAlgo/Cell.cs" Line="46" Column="42" />
+      <File FileName="ClonalAlgo/Helper.cs" Line="8" Column="33" />
+      <File FileName="ClonalAlgo/Program.cs" Line="76" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
