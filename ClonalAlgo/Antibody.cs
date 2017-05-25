@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace ClonalAlgo
 {
-
 	public class Antibody : Cell
 	{
 		public Antibody(List<int> pData) : base(pData)

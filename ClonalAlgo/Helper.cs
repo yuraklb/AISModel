@@ -11,13 +11,6 @@ namespace ClonalAlgo
 
 		public static int NumberOfAntibody = 10;
 
-		public static int PercentToInt(int perc100, int cur)
-		{
-			int perc1 = (int)(perc100 / 100);
-			int res = (int)(cur / perc1);
-
-			return res;
-		}
 		public static void Print(Cell cell)
 		{
 			for (int i = 0; i < cell.Size; i++) {
@@ -39,19 +32,6 @@ namespace ClonalAlgo
 				}
 			}
 			return distance;
-			//double res = ((double)distance * 100.0) / ((double)first.Size );
-			//return res;
-		}
-
-		public static double GenerateTreashold(List<KeyValuePair<double, Antibody>> pAff)
-		{
-			double res = 0.0;
-
-			foreach (var item in pAff) {
-				res += item.Key;
-			}
-
-			return res / pAff.Count;
 		}
 	}
 }

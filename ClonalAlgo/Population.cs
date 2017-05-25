@@ -81,18 +81,15 @@ RM і переходити до кроку 2 до тих пір, поки не �
 				return x.Key.CompareTo(y.Key);
 			});
 
-
+			//TODO remove bad items
 			aff = aff.GetRange(0, amount);
 
-			//std::multimap<int, int> abn = aff;
 
-			// Clonning
+			//TODO cloning good items
+			// Clonning 
 			List<int> c_amount = new List<int>();
-			//std::vector<int> c_amount(aff.size());
 			for (int _i = 0; _i < aff.Count; _i++) {
-
 				double qwe = (int)((beta * Helper.NumberOfAntibody) / (aff[_i].Value + 1));
-
 				c_amount.Add((int)qwe);
 			}
 
@@ -101,11 +98,12 @@ RM і переходити до кроку 2 до тих пір, поки не �
 				Nc += c_amount[i];
 			}
 
-			List<Antibody> C = new List<Antibody>(Nc);
-			List<int> C_indexes = new List<int>(Nc);
-			//it = aff.begin();
+			List<Antibody> C = new List<Antibody>();
+			List<int> C_indexes = new List<int>();
+
 			for (int i = 0; i < aff.Count; i++) {
 				while (c_amount[i] != 0) {
+					
 					C.Add(ABs[aff[i].Value].Copy());
 					C_indexes.Add(aff[i].Value + 1);
 					c_amount[i]--;

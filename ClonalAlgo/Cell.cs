@@ -4,7 +4,6 @@ namespace ClonalAlgo
 {
 	public class Cell
 	{
-
 		public static Random mRandom = new Random();
 
 		public List<int> data = new List<int>();
@@ -29,17 +28,6 @@ namespace ClonalAlgo
 				return data.Count;
 			}
 		}
-
-		//public Cell Copy()
-		//{
-		//	Cell c = new Cell(0);
-		//	foreach (var item in data)
-		//	{
-		//		c.data.Add(item);
-		//	}
-
-		//	return c;
-		//}
 
 		public void Mutate(double p_mut)
 		{
