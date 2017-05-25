@@ -29,6 +29,17 @@ namespace ClonalAlgo
 			}
 		}
 
+		public string ToString()
+		{
+			string res = string.Empty;
+
+			foreach (var item in data) {
+				res += item.ToString() + " ";
+			}
+
+			return res;
+		}
+
 		public void Mutate(double p_mut)
 		{
 			if (Cell.mRandom.NextDouble() <= p_mut)

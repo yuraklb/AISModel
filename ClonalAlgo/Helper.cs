@@ -5,7 +5,7 @@ namespace ClonalAlgo
 {
 	public static class Helper
 	{
-		public static int CellSize = 50;
+		public static int CellSize = 10;
 
 		public static int NumberOfGeneration = 330;
 

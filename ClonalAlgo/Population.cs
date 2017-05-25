@@ -39,9 +39,9 @@ RM і переходити до кроку 2 до тих пір, поки не �
 			int Abr_begin = 1; // range in set of antibodies, it shows where is a remaining cells (from Arm_begin to Arm_end)
 		int Abr_end = Helper.NumberOfAntibody;
 
-		int amount = 6; // how many antibodies need to select with the lowest affinity
-		
+		int amount = 6; // how many antibodies need to select with the lowest affinity //???
 
+		public int BestAffinity = 0;
 		public List<Antibody> ABs = new List<Antibody>();
 
 		public void Init()
@@ -63,6 +63,8 @@ RM і переходити до кроку 2 до тих пір, поки не �
 				pop.ABs.Add(new Antibody(Helper.CellSize));
 			}
 
+			pop.BestAffinity = BestAffinity;
+
 			return pop;
 		}
 
@@ -75,6 +77,8 @@ RM і переходити до кроку 2 до тих пір, поки не �
 			List<KeyValuePair<int, int>> aff = new List<KeyValuePair<int, int>>();
 			for (int i = 0; i < Helper.NumberOfAntibody; i++) {
 				aff.Add(new KeyValuePair<int, int>(Helper.Affinity(ABs[i], pAg), i));
+
+
 			}
 
 			aff.Sort((x, y) => {
@@ -130,8 +134,18 @@ RM і переходити до кроку 2 до тих пір, поки не �
 			// Replacing antibody with its best clone
 			if (aff_star[0].Key < Helper.Affinity(ABs[0], pAg)) {
 				ABs[0] = C[aff_star[0].Value].Copy();
+
+
+
 			}
 
+			BestAffinity = Helper.Affinity(ABs[0], pAg);
+
+			return ABs[0];
+		}
+
+		public Antibody GetBestAntibody()
+		{
 			return ABs[0];
 		}
 	}

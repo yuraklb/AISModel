@@ -18,7 +18,12 @@ namespace ClonalAlgo
 			foreach (var item in data) {
 				c.data.Add(item);
 			}
+
+			c.Affinity = Affinity;
+
 			return c;
 		}
+
+		public int Affinity = 0;
 	}
 }

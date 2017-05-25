@@ -1,9 +1,11 @@
-﻿<Properties StartupConfiguration="{485718D7-E32E-45FE-8114-A6BEF6516A87}|Default">
+﻿<Properties StartupConfiguration="{149C4A76-C8C8-4719-B90C-A0B3E3FAD4D7}|Default">
   <MonoDevelop.Ide.ItemProperties.ClonalAlgo PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.AISModel PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="AISModel Status">
     <Files>
-      <File FileName="AISModel/Program.cs" Line="25" Column="83" />
+      <File FileName="ClonalAlgoGUI/GUI/MainWindow.cs" Line="20" Column="14" />
+      <File FileName="ClonalAlgo/Program.cs" Line="25" Column="1" />
+      <File FileName="ClonalAlgo/Population.cs" Line="81" Column="5" />
       <File FileName="AISModel Status" />
     </Files>
   </MonoDevelop.Ide.Workbench>
@@ -15,5 +17,6 @@
     <Watch file="../../prj/omega/psp-omega/ReceiptLib/ReceiptPart.cs" line="585" offsetX="1094" offsetY="9328" expression="psp.TypeReceiptMessage" liveUpdate="False" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.ClonalAlgoGUI PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.AISAlgo PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>
